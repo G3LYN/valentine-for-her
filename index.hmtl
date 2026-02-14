@@ -2,22 +2,133 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Happy Valentine ❤️</title>
-<link rel="stylesheet" href="style.css">
+<title>Pour Toi ❤️</title>
+
+<style>
+* {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif;}
+body {height:100vh; overflow:hidden;}
+
+.hero {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff4b6e, #ffccd5);
+    filter: brightness(60%);
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+button {
+    padding: 18px 40px;
+    font-size: 22px;
+    border: none;
+    border-radius: 40px;
+    background: white;
+    color: #ff4b6e;
+    cursor: pointer;
+    transition: .3s;
+}
+button:hover {transform: scale(1.1);}
+
+.hidden {display: none;}
+.rose {font-size: 120px; margin-bottom: 20px; animation: pop 1.2s ease forwards;}
+
+h1 {font-size: 55px; margin-bottom: 15px; animation: fade 2s forwards;}
+
+p {
+    max-width: 650px;
+    font-size: 22px;
+    line-height: 1.6;
+    margin-top: 10px;
+    opacity: 0;
+    animation: fade 2s forwards;
+    animation-delay: 2s;
+}
+
+.signature {
+    margin-top: 25px;
+    font-style: italic;
+    animation-delay: 4s;
+}
+
+@keyframes pop {0%{transform: scale(0);} 100%{transform: scale(1);}}
+@keyframes fade {from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);}}
+
+.heart {
+    position: fixed;
+    color: #ffccd5;
+    font-size: 20px;
+    animation: fall linear infinite;
+}
+@keyframes fall {from{transform: translateY(-10vh);} to{transform: translateY(110vh);}}
+</style>
 </head>
+
 <body>
 
-<div class="container">
-    <button id="startBtn">Clique ici ❤️</button>
+<div class="hero"></div>
 
-    <div id="scene" class="hidden">
-        <div class="rose">🌹</div>
-        <h1>Bonne fête de Saint-Valentin ❤️</h1>
-        <p>La vraie rose t’attend quand on se verra…</p>
-        <p class="signature">– Ton développeur préféré 💻</p>
-    </div>
+<div class="content" id="start">
+    <button onclick="start()">Ouvre ton message ❤️</button>
 </div>
 
-<script src="script.js"></script>
+<div class="content hidden" id="scene">
+    <div class="rose">🌹</div>
+
+    <h1>Joyeuse Saint-Valentin ❤️</h1>
+
+    <p>
+        J’ai créé cette petite page rien que pour toi.
+        Un endroit simple, mais rempli de pensées pour toi.
+        Comme une mini cachette sur Internet où tu peux venir sourire.
+    </p>
+
+    <p>
+        Et si un jour tu ne te sens pas bien, si la journée est lourde,
+        il te suffira de revenir sur ce lien…
+        pour te rappeler qu’il y a quelqu’un quelque part qui pense à toi.
+    </p>
+
+    <p>
+        Cette rose est virtuelle… mais la vraie t’attend.
+        Et elle sera encore plus belle quand je pourrai te la donner en vrai.
+    </p>
+
+    <p class="signature">
+        Pense à moi quand tu vois cette page ❤️
+    </p>
+</div>
+
+<script>
+function start() {
+    document.getElementById("start").style.display = "none";
+    document.getElementById("scene").classList.remove("hidden");
+    createHearts();
+}
+
+function createHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+    }, 300);
+}
+</script>
+
 </body>
 </html>
