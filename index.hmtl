@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Happy Valentine ❤️</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <button id="startBtn">Clique ici ❤️</button>
+
+    <div id="scene" class="hidden">
+        <div class="rose">🌹</div>
+        <h1>Bonne fête de Saint-Valentin ❤️</h1>
+        <p>La vraie rose t’attend quand on se verra…</p>
+        <p class="signature">– Ton développeur préféré 💻</p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
